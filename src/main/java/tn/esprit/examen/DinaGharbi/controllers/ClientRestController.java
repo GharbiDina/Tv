@@ -1,6 +1,7 @@
 package tn.esprit.examen.DinaGharbi.controllers;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.examen.DinaGharbi.entities.Client;
 import tn.esprit.examen.DinaGharbi.entities.Programme;
@@ -28,6 +29,19 @@ public class ClientRestController {
         Programme programme = services.ajouterProgrammeEtChaine(p);
         return programme;
     }
+    @PostMapping("/creer-et-affecter")
+    public ResponseEntity<?> creerEtAffecterUtilisateur(
+            @RequestBody Programme prg,
+            @RequestParam Long chId) {
+        try {
+            // Appeler le service pour créer et affecter l'utilisateur
+            Programme nouvPrg = services.ceeretAffecterProg(prg, chId);
+            return ResponseEntity.ok(nouvPrg);
+        } catch (RuntimeException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
 
 
 }

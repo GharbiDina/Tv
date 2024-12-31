@@ -8,5 +8,6 @@ public interface IServices {
     Client add(Client client);
     public Utilisateur ajouterUtilisateur (Utilisateur u);
     public Programme ajouterProgrammeEtChaine (Programme p);
+    public Programme ceeretAffecterProg(Programme prg, Long chId);
     void test();
 }
