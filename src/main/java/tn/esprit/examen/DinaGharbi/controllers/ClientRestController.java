@@ -3,6 +3,7 @@ package tn.esprit.examen.DinaGharbi.controllers;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.examen.DinaGharbi.entities.Client;
+import tn.esprit.examen.DinaGharbi.entities.Utilisateur;
 import tn.esprit.examen.DinaGharbi.services.IServices;
 
 @RequiredArgsConstructor
@@ -15,5 +16,12 @@ public class ClientRestController {
     public Client add(@RequestBody Client client){
         return  services.add(client);
     }
+    @PostMapping("/add-Utilisateur")
+    public Utilisateur addUtilisateur(@RequestBody Utilisateur c) {
+        Utilisateur chambre = services.ajouterUtilisateur(c);
+        return chambre;
+    }
+
+
 
 }
