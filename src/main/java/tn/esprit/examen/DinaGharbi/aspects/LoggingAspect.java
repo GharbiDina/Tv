@@ -32,4 +32,8 @@ public class LoggingAspect {
         log.info("AfterThrowing of method " + name + " : ");
         log.error(nameEx.getMessage());
     }
+    @After("execution(* tn.esprit.examen.DinaGharbi.services.*.ajouter*(..))")
+    public void afficherBonCourage(JoinPoint joinPoint) {
+        log.info("ajoutt: "+joinPoint.getSignature().getName());
+    }
 }
