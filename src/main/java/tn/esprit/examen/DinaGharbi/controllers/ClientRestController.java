@@ -3,6 +3,7 @@ package tn.esprit.examen.DinaGharbi.controllers;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.examen.DinaGharbi.entities.Client;
+import tn.esprit.examen.DinaGharbi.entities.Programme;
 import tn.esprit.examen.DinaGharbi.entities.Utilisateur;
 import tn.esprit.examen.DinaGharbi.services.IServices;
 
@@ -22,6 +23,11 @@ public class ClientRestController {
         return chambre;
     }
 
+    @PostMapping("/ajouter-projet-et-projet-detail")
+    public Programme ajouterProgrammeEtChaine(@RequestBody Programme p) {
+        Programme programme = services.ajouterProgrammeEtChaine(p);
+        return programme;
+    }
 
 
 }

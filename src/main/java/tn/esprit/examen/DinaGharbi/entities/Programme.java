@@ -20,8 +20,9 @@ public class Programme {
     private  String prgName;
     @ManyToMany(mappedBy="programmes", cascade = CascadeType.ALL)
     private List<Utilisateur> utilisateurs;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     Chaine chaine;
+
 
 
 }
