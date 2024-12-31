@@ -91,6 +91,18 @@ public class ServicesImpl implements IServices {
           throw new RuntimeException("Le programme " + prNom + " n'est pas dans la liste des favoris de l'utilisateur " + usrNom + ".");
       }
   }
+    @Scheduled(fixedRate = 20000)
+    public void ordonnerChaines() {
+        // Récupérer les chaînes triées par nombre de programmes favoris
+        List<Object[]> results = chaineRepo.findChainesByProgrammesFavoris();
 
+        // Affichage des résultats
+        results.forEach(result -> {
+            // L'index 0 est la chaîne et l'index 1 est le nombre de programmes favoris
+            String chaineNom = ((Chaine) result[0]).getCNnom();
+            Long favorisCount = (Long) result[1];
+            System.out.println("Chaine: " + chaineNom + ", Favoris: " + favorisCount);
+        });
+    }
 
 }
