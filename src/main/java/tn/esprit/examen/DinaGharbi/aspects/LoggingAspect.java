@@ -34,6 +34,6 @@ public class LoggingAspect {
     }
     @After("execution(* tn.esprit.examen.DinaGharbi.services.*.ajouter*(..))")
     public void afficherBonCourage(JoinPoint joinPoint) {
-        log.info("ajoutt: "+joinPoint.getSignature().getName());
+        log.info("Execution Reussite: "+joinPoint.getSignature().getName());
     }
 }

@@ -9,5 +9,6 @@ public interface IServices {
     public Utilisateur ajouterUtilisateur (Utilisateur u);
     public Programme ajouterProgrammeEtChaine (Programme p);
     public Programme ceeretAffecterProg(Programme prg, Long chId);
+    public void affecterProgrammeAUtilisateur (String prNom, String usrNom);
     void test();
 }

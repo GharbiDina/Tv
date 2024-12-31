@@ -41,6 +41,10 @@ public class ClientRestController {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
+    @PutMapping("/ancien/{idBf}/{kk}")
+    public void affecterProgrammeAUtilisateur(@PathVariable String idBf,@PathVariable String kk) {
+        services.affecterProgrammeAUtilisateur(idBf, kk);
+    }
 
 
 

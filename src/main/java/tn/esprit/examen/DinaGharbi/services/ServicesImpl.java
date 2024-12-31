@@ -55,5 +55,14 @@ public class ServicesImpl implements IServices {
         // Sauvegarder l'utilisateur
         return programmeRepo.save(prg);
     }
+    public void affecterProgrammeAUtilisateur (String prNom, String usrNom)
+    {
+        Programme  prg = programmeRepo.findProgrammesByPrgName(prNom);
+        Utilisateur utilisateur = utilisateurRepo.findUtilisateurByUsrNom(usrNom);
+// on set le fils dans le parent :
+        utilisateur.getProgrammes().add(prg);
+        utilisateurRepo.save(utilisateur);
+
+    }
 
 }
