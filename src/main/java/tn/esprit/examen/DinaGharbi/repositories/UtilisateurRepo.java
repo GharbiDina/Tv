@@ -8,6 +8,9 @@ import tn.esprit.examen.DinaGharbi.entities.Utilisateur;
 
 @Repository
 public interface UtilisateurRepo extends JpaRepository<Utilisateur,Long> {
-    //@Query("SELECT c FROM Programme c WHERE c.prgName= ?1")
+
     Utilisateur findUtilisateurByUsrNom(String usrNom);
+
+
+
 }

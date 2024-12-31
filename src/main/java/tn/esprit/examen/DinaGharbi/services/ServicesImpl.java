@@ -11,6 +11,9 @@ import tn.esprit.examen.DinaGharbi.repositories.IClientRepository;
 import tn.esprit.examen.DinaGharbi.repositories.ProgrammeRepo;
 import tn.esprit.examen.DinaGharbi.repositories.UtilisateurRepo;
 
+import java.util.Date;
+import java.util.List;
+
 @Slf4j
 @RequiredArgsConstructor
 @Service
@@ -64,5 +67,30 @@ public class ServicesImpl implements IServices {
         utilisateurRepo.save(utilisateur);
 
     }
+  /*  public List<Utilisateur> recupererUtilisateurs(Profession p, Date d, Thematique t)
+    {
+
+    }*/
+  public void desaffecterProgrammeDeUtilisateur(String prNom, String usrNom) {
+      // Rechercher le programme par son nom
+      Programme programme = programmeRepo.findProgrammesByPrgName(prNom);
+      if (programme == null) {
+          throw new RuntimeException("Programme avec le nom " + prNom + " n'existe pas.");
+      }
+
+      // Rechercher l'utilisateur par son nom
+      Utilisateur utilisateur = utilisateurRepo.findUtilisateurByUsrNom(usrNom);
+      if (utilisateur == null) {
+          throw new RuntimeException("Utilisateur avec le nom " + usrNom + " n'existe pas.");
+      }
+
+      // Supprimer le programme de la liste des programmes de l'utilisateur
+      if (utilisateur.getProgrammes().remove(programme)) {
+          utilisateurRepo.save(utilisateur);
+      } else {
+          throw new RuntimeException("Le programme " + prNom + " n'est pas dans la liste des favoris de l'utilisateur " + usrNom + ".");
+      }
+  }
+
 
 }
