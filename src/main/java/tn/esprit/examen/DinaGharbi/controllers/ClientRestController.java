@@ -2,12 +2,14 @@ package tn.esprit.examen.DinaGharbi.controllers;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import tn.esprit.examen.DinaGharbi.entities.Client;
-import tn.esprit.examen.DinaGharbi.entities.Programme;
-import tn.esprit.examen.DinaGharbi.entities.Utilisateur;
+import tn.esprit.examen.DinaGharbi.entities.*;
 import tn.esprit.examen.DinaGharbi.services.IServices;
+
+import java.util.Date;
+import java.util.List;
 
 @RequiredArgsConstructor
 @RequestMapping("examen")
@@ -58,6 +60,13 @@ public class ClientRestController {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
+    @GetMapping("/utilisateurs")
+    public List<Utilisateur> recupererUtilisateurs(@RequestParam Profession profession,
+                                                   @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date date,
+                                                   @RequestParam Thematique thematique) {
+        return services.recupererUtilisateurs(profession, date, thematique);
+    }
+
 
 
 

@@ -67,10 +67,10 @@ public class ServicesImpl implements IServices {
         utilisateurRepo.save(utilisateur);
 
     }
-  /*  public List<Utilisateur> recupererUtilisateurs(Profession p, Date d, Thematique t)
-    {
+    public List<Utilisateur> recupererUtilisateurs(Profession p, Date d, Thematique t) {
+        return utilisateurRepo.findUtilisateursByCriteria(p, d, t);
+    }
 
-    }*/
   public void desaffecterProgrammeDeUtilisateur(String prNom, String usrNom) {
       // Rechercher le programme par son nom
       Programme programme = programmeRepo.findProgrammesByPrgName(prNom);
